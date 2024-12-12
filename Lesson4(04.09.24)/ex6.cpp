@@ -3,7 +3,7 @@
 #include <regex>
 using namespace std;
 
-
+//исправить
 bool ValidationOfRomanNumerals(string str)
 {
 
@@ -82,10 +82,10 @@ int main()
 {
     string str = "1";
     if (ValidationOfRomanNumerals(str)) {
-        cout << "Integer form of Roman Numeral is " << romanToDecimal(str) << endl;
+        cout << "Числовая форма" << romanToDecimal(str) << endl;
     }
     else {
-        cout << "Vvedeni nekoorektnie dannie";
+        cout << "Введены некорректные данныеб. Повторите попытку!";
     }
 
     return 0;

@@ -68,7 +68,7 @@ int main() {
 		return 0;
 	}
 	long long int decimal = 0;
-	// в десятичную
+	
 	for (int i = 0; i < num.size(); i++) {
 		if (char_to_int(num[i]) == -1 or char_to_int(num[i]) >= a) {
 			cout << "Введены некоректные данные. Повторите попытку!";
@@ -77,7 +77,7 @@ int main() {
 		decimal += char_to_int(num[i]) * pow(a, num.size() - i - 1);
 	}
 	string ans = "";
-	// в любую
+	
 	while (decimal != 0) {
 		ans += int_to_char(decimal % b);
 		decimal = decimal / b;
