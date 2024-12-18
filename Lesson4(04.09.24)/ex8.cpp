@@ -1,77 +1,36 @@
-#include <string>
 #include <iostream>
-#include <regex>
-using namespace std;
-//исправить
-void multiply(float A1[3][4], float B2[4][2], float res[3][2]) {
-    int a, z, k;
-    for (a = 0; a < 3; a++) {
-        for (z = 0; z < 2; z++) {
-            res[a][z] = 0;
-            for (k = 0; k < 4; k++)
-                res[a][z] += A1[a][k] * B2[k][z];
-        }
-    }
-}
-
-int main() {
-    float items[3][4];//{ { 5.,2.,0.,10. }, { 3.,5.,2.,5. }, { 20.,0.,0.,0. } };
-    float price[4][2];//{ { 1.2, 0.5 }, { 2.8, 0.4 }, { 5.0, 1.0 }, { 2.0, 1.5 } };
-    float result[3][2];
-    multiply(items, price, result);
+#include <cstdlib>
+using namespace std; 
+ 
+int n,i,j; 
+float s,Smax=0,Smin=999,Sx,Sn,Kmax=0,Kmin=999,Kx,Kn,S=0,K=0,N=0; 
+int main(){ 
+    float A[3][4]={{5,2,0,10},{3,5,2,5},{20,0,0,0}}; 
+    float B[4][2]={{1.2,0.5},{2.8,0.4},{5,1},{2,1.5}}; 
+    float C[3][2]={{0,0},{0,0},{0,0}}; 
 
     
-    float mx = 0;
-    int exp = 0;
-    float mn = 1000000000;
-    int cheap = 0;
-    for (int i = 0; i < 3; i++) {
-        if (result[i][0] > mx) {
-            mx = result[i][0];
-            exp = i;
-        }
-        if (result[i][0] < mn) {
-            mn = result[i][0];
-            cheap = i;
-        }
-    }
-    cout << "дешевый: " << cheap + 1 << " дорогой: " << exp + 1 << endl;
-
-    
-    float mx1 = 0;
-    int exp1 = 0;
-    float mn1 = 1000000000;
-    int cheap1 = 0;
-    for (int i = 0; i < 3; i++) {
-        if (result[i][1] > mx1) {
-            mx1 = result[i][1];
-            exp1 = i;
-        }
-        if (result[i][1] < mn1) {
-            mn1 = result[i][1];
-            cheap1 = i;
-        }
-    }
-    cout << "дешевый: " << cheap1 + 1 << " дорогой: " << exp1 + 1 << endl;
-
-
-    
-
-    float summa = 0;
-    for (int i = 0; i < 3; i++) {
-        summa += result[i][0];
-    }
-    cout << summa << endl;
-
-    
-
-    float summa1 = 0;
-    for (int i = 0; i < 3; i++) {
-        summa1 += result[i][1];
-    }
-    cout << summa1 << endl;
-
-    
-
-    cout << summa - summa1;
+    for (n=0;n<3;n++){ 
+        for (i=0;i<2;i++){ 
+            s=0; 
+            for (j=0;j<4;j++){ 
+                s=s+A[n][j]*B[j][i]; 
+            } 
+        C[n][i]=s; 
+        } 
+    } 
+    for (i=0;i<3;i++){ 
+        S+=C[i][0]; 
+        K+=C[i][1]; 
+        if (Smax<C[i][0]){Smax=C[i][0];Sx=i;} 
+        if (Smin>C[i][0]){Smin=C[i][0];Sn=i;} 
+        if (Kmax<C[i][1]){Kmax=C[i][1];Kx=i;} 
+        if (Kmin>C[i][1]){Kmin=C[i][1];Kn=i;} 
+        } 
+    N=S+K; 
+    cout <<Sx+1<<" "<<Sn+1<< endl; 
+    cout<<Kx+1<<" "<<Kn+1<<endl; 
+    cout<<S<<endl; 
+    cout<<K<<endl; 
+    cout<<N; 
 }
